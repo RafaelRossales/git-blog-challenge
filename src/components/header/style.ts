@@ -65,59 +65,59 @@ export const TextContent = styled.div`
     .body{
         text-align: justify;
     }
+`
 
-    .footer{
+export const IconsHeader = styled.div`
         display: flex;
         flex-direction:row;
-        width: 65%;
+        width: auto;
         justify-content: start;
         gap: 20px;
 
-        .repo{
+        
+        .first-header-icon{
             display: flex;
             flex-direction: row;
             align-items: center;
 
             img{
-                width:18px;
-                height:18px;
+                width:16px;
+                height:16px;
                 margin-right: 8px;
             }
         }
 
-        .building{
+        .second-header-icon{
             display: flex;
             flex-direction: row;
             align-items: center;
 
             img{
-                width:18px;
-                height:18px;
+                width:16px;
+                height:16px;
                 margin-right: 8px;
             }
         }
 
-        .followers{
+        .third-header-icon{
             display: flex;
             flex-direction: row;
             align-items: center;
 
             img{
-                width:18px;
-                height:18px;
+                width:16px;
+                height:16px;
                 margin-right: 8px;
             }
         }
-    }
-
-    
 `
 
 export const InfoContainer = styled.div`
     width: 100vw;
     height:auto;
-    /* background-color: red; */
-
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 `
 
 export const InfoHeader = styled.div`
@@ -135,5 +135,16 @@ export const InfoHeader = styled.div`
     
     a > img{
         margin-right:3px;
+    }
+`
+
+export const InfoBody = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+
+    p{
+        font-size: 25px;
+        font-weight: 600;
     }
 `

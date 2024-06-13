@@ -1,16 +1,28 @@
+import { Link } from "react-router-dom";
+import { RepositoryContext, TIssue } from "../../context/RepositoryContext";
 import { CardBody, CardContent, CardHeader, CardHeaderText, CardHeaderTime } from "./style";
+import { useContext, useEffect, useState } from "react";
 
-export function Card(){
+
+export function Card({ body, title, number ,url, id }:TIssue){
+
+    const [issue, setIssue] = useState(null);
+    const  bodyHandler = (str:string) => `${str.length > 250 && str.substring(0,230)} ...`;    
+    const  titleHandler = (str:string) => str.split(':')[1];
+
+    
     return(
         <CardContent>
             <CardHeader>
                 <CardHeaderText>
-                    JavaScript data types and data structures
+                    {titleHandler(title)}
                 </CardHeaderText>
                     <CardHeaderTime>Há 1 dia</CardHeaderTime>
             </CardHeader>
             <CardBody>
-                Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in.
+                <Link to={`/post/${id}`}>
+                    {bodyHandler(body)}
+                </Link>
             </CardBody>
         </CardContent>
     )

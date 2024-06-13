@@ -1,11 +1,15 @@
 import { ContainerSearch, SearchBarHeader, SearchFormContainer } from "./styles";
 
-export function SearchFormComponent(){
+interface ISearchProps{
+    publishedIssues:number
+}
+
+export function SearchFormComponent({publishedIssues}:ISearchProps){
     return(
         <ContainerSearch>
             <SearchFormContainer>
                 <SearchBarHeader>
-                    <p>Publicações</p> <span>6 pblicações</span>
+                    <p>Publicações</p> <span>{publishedIssues} publicações</span>
                 </SearchBarHeader>
                 <input type="text" placeholder="Busque por transação"/>
             </SearchFormContainer>

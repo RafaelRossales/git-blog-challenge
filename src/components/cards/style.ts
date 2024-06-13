@@ -7,6 +7,7 @@ export const CardContent = styled.div`
     border-radius: 10px 10px 10px 10px;
     padding: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
 `
 
 export const CardHeader = styled.div`
@@ -28,7 +29,7 @@ export const CardHeaderTime = styled.div`
 `
 
 export const CardBody = styled.div`
-    margin-top: 24px;
+    margin-top: 5px;
     width: 352px;
     height: 12px;
     font-size: 14px;
@@ -37,4 +38,9 @@ export const CardBody = styled.div`
     text-align: justify;
     color:${props=>props.theme.baseText};
     line-height: 1.4rem;
+
+    /* white-space: nowrap; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  /* max-width: 200px; */
 `

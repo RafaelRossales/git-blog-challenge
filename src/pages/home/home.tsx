@@ -1,26 +1,40 @@
-import { Card } from "../../components/cards";
 import { Content } from "../../components/content";
 import { Header } from "../../components/header";
-import { HomeContent } from "./style";
 import { Profile } from "../../components/header/profile";
 import { Info } from "../../components/header/info";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import  {RepositoryContext}  from "../../context/RepositoryContext";
+
+
+
 
 export default function Home(){
 
-    let [renderProfile, setRenderProfile] = useState<boolean>(false)
+    const [renderProfile, setRenderProfile] = useState<boolean>(true);
+    const [loading, setLoading] = useState(true);
+    const { repository } = useContext(RepositoryContext);
+
+    useEffect(() => {
+        if (repository) {
+          setLoading(false);
+        }
+      }, [repository]);
+    
+      if (loading) {
+        return <div>Loading...</div>; // Render a loading indicator
+      }
 
     return(
         <div>
             <Header children={ renderProfile ? 
-            <Profile 
-                profileName="Rafael Garcia"
-                profileRepository="rafaelrossalez"
+            <Profile
+                profileName={repository.name}
+                profileRepository={repository.html_url}
                 profileDescription="Rafael Garcia github repository"
-                profileImg="https://avatars.githubusercontent.com/rafaelrossalez?v=4"
+                profileImg={repository.avatar_url}
                 profileLink="https://github.com/rafaelrossalez"
                 profileLinkText="Github"
-                profileFollowers={100}
+                profileFollowers={repository.followers}
                 />  : 
                 <Info/>
                 }/>
