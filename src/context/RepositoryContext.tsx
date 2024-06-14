@@ -16,7 +16,7 @@ export type TRepository = {
 export type TIssue = {
     title: string;
     body: string;
-    number: number;
+    number?: number;
     url: string;
     id?:number
 }

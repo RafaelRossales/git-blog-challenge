@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import 'github-markdown-css/github-markdown.css';
+
 
 export const ContentStyle = styled.div`
     margin: 0 auto;
@@ -13,3 +15,23 @@ export const PostsSection = styled.div`
     column-gap: 32px;
     margin-top:72px;
 `
+
+
+
+export const TransparentMarkdownContainer = styled.div`
+    @import 'github-markdown-css/github-markdown.css';
+
+    /* Apply GitHub Markdown styles */
+    .markdown-body {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+
+        p{
+            text-align: justify;
+        }
+
+        /* Add more overrides if needed */
+    }
+`;
+

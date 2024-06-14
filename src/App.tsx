@@ -8,26 +8,6 @@ import { Layout } from "./routes/layout/layout"
 import Post from "./components/post"
 import { BrowserRouter as Router } from 'react-router-dom';
 
-
-
-// function App() {
-//   return(
-//     <ThemeProvider theme={defaultTheme}>
-//       <GlobalStyle/>
-//       <RepositoryProvider>
-//           <Home/>
-//       </RepositoryProvider>
-//       <Routes>
-//         <Route path="/" element={<Layout />}>
-//           <Route index element={<Home />} />
-//           <Route path="post/:id" element={<Post />} />
-//           {/* <Route path="about" element={<About />} /> */}
-//         </Route>
-//       </Routes>
-//     </ThemeProvider>
-//   )
-// }
-
 function App(){
   return(
     <ThemeProvider theme={defaultTheme}>
@@ -35,7 +15,7 @@ function App(){
       <RepositoryProvider>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/post/:id" element={<Post />} />
+        <Route path="/post/:id" element={<Home key="post" />} />
       </Routes>
       </RepositoryProvider>
     </ThemeProvider>

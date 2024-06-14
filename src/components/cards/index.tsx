@@ -4,7 +4,7 @@ import { CardBody, CardContent, CardHeader, CardHeaderText, CardHeaderTime } fro
 import { useContext, useEffect, useState } from "react";
 
 
-export function Card({ body, title, number ,url, id }:TIssue){
+export function Card({ body, title ,url, id }:TIssue){
 
     const [issue, setIssue] = useState(null);
     const  bodyHandler = (str:string) => `${str.length > 250 && str.substring(0,230)} ...`;    
