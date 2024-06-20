@@ -2,13 +2,11 @@ import { Header } from "../../components/header";
 import { Profile } from "../../components/header/profile";
 import { Info } from "../../components/header/info";
 import { useContext, useEffect, useState } from "react";
-import  {RepositoryContext, TRepository, defaultRepository}  from "../../context/RepositoryContext";
+import  {RepositoryContext}  from "../../context/RepositoryContext";
 import { useParams } from "react-router-dom";
 import { ContentStyle } from "../../components/content/style";
 import Post from "../../components/post/Post";
 import Posts from "../../components/post/Posts";
-import { Skeleton } from "../../components/skeleton";
-import { SearchBarHeader } from "../../components/searchbar/styles";
 import { SearchFormComponent } from "../../components/searchbar";
 
 

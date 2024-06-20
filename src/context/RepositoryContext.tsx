@@ -3,12 +3,14 @@ import { createContext, useEffect, useState } from "react";
 
 const REPOSITORY_NAME:string = 'rafaelrossales';
 
+const TOKEN :string = import.meta.env.VITE_API_SECRET;
+
 
 
   const axiosInstance = axios.create({
     baseURL: 'https://api.github.com',  // Base URL for GitHub API
     headers: {
-      'Authorization': 'Bearer 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',
+      'Authorization': `Bearer ${TOKEN}`,
       'X-GitHub-Api-Version': '2022-11-28'
     },
   });
