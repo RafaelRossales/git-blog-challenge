@@ -8,7 +8,6 @@ export const ContentStyle = styled.div`
 `;
 
 export const PostsSection = styled.div`
-    /* width: 864px; */
     display: grid;
     grid-template-columns: 1fr 2fr;
     row-gap: 28px;
@@ -21,7 +20,6 @@ export const PostsSection = styled.div`
 export const TransparentMarkdownContainer = styled.div`
     @import 'github-markdown-css/github-markdown.css';
 
-    /* Apply GitHub Markdown styles */
     .markdown-body {
         background-color: transparent;
         padding: 0;
@@ -31,7 +29,13 @@ export const TransparentMarkdownContainer = styled.div`
             text-align: justify;
         }
 
-        /* Add more overrides if needed */
     }
 `;
 
+export const NoPostsFound = styled.div`
+    width: 55rem;
+    font-size: 42px;
+    text-align: center;
+    padding: 20px; 
+    margin: 0 auto; 
+`;

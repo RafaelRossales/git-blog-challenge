@@ -3,14 +3,25 @@ import { createContext, useEffect, useState } from "react";
 
 const REPOSITORY_NAME:string = 'rafaelrossales';
 
+
+
+  const axiosInstance = axios.create({
+    baseURL: 'https://api.github.com',  // Base URL for GitHub API
+    headers: {
+      'Authorization': 'Bearer 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',
+      'X-GitHub-Api-Version': '2022-11-28'
+    },
+  });
+
 export type TRepository = {
-    profileImg:string;
-    profileName:string;
-    profileDescription:string;
-    profileFollowers:number;
+    avatar_url:string;
+    name:string;
+    bio:string;
+    followers:number;
     profileRepository:string;
-    profileLink:string;
-    profileLinkText:string;
+    url:string;
+    login:string;
+    tag:string
 }
 
 export type TIssue = {
@@ -29,55 +40,63 @@ export interface IIssues{
     issue: any;
 }
 
+export const defaultRepository =  {
+    avatar_url:'',
+    name:'',
+    bio:'',
+    followers:0,
+    profileRepository:'',
+    url:'',
+    login:'',
+    tag:'',
+} as TRepository
+
 
 interface RepositoryContextType{
-    repository:TRepository[];
+    repository:TRepository;
     issues:IIssues;
-    getIssue:(id:number)=> Promise<any>
+    getIssue:(id:number)=> Promise<any>,
+    getIssues:(search?:string)=>Promise<void>
+    getRepository:()=>Promise<void>
 }
 
-interface RepositoryProviderProps{
-    children:React.ReactNode;
-}
-
+interface RepositoryProviderProps{ children:React.ReactNode; }
 
 export const RepositoryContext = createContext( {} as RepositoryContextType);
 
 export function RepositoryProvider({children}:RepositoryProviderProps){
 
-    const [repository, setRepository] = useState<TRepository[]>([]);
-    const [issues, setIssues] = useState<IIssues>({});
-    const [issue, setIssue] = useState<any>(null);
-
-
+    const [repository, setRepository] = useState<TRepository>(defaultRepository);
+    const [issues, setIssues] = useState<IIssues>({ total_count: 0, incomplete_results: false, items: [], issue: null });
 
     async function getRepository():Promise<void>{
-        const response = await axios.get(`https://api.github.com/users/${REPOSITORY_NAME}`);
+        const response = await axiosInstance.get(`users/${REPOSITORY_NAME}`);
         const { data } = response;
-        console.log('d',data);
         setRepository(data);
     }
-
-    async function getIssues(issueName:string):Promise<void>{
-        const response = await axios.get(`https://api.github.com/search/issues?q=${issueName}%20repo:${REPOSITORY_NAME}/issues`);
+    
+    async function getIssues(search?:string):Promise<void>{
+        let url:string = `search/issues?q=Test%20repo:${REPOSITORY_NAME}/issues`;
+        if(search!=undefined) url = `search/issues?q=Test%20${search}%20repo:${REPOSITORY_NAME}/issues`;
+        const response = await axiosInstance.get(url);
         const { data } = response;
-        console.log(response);
+        console.log(data)
         setIssues(data)
     }
 
     async function getIssue(id:number):Promise<any>{
-        const response = await axios.get(`https://api.github.com/repos/RafaelRossales/issues/issues/${id}`);
+        const response = await axiosInstance.get(`repos/RafaelRossales/issues/issues/${id}`);
         const { data } = response;
-        return data
+        return data;
     }
 
     useEffect(()=>{
         getRepository();
-        getIssues('Test');
+        getIssues();
     },[]);
 
     return(
-        <RepositoryContext.Provider value={{repository, issues, getIssue}}>
+        <RepositoryContext.Provider value={{ repository, issues, getIssue,getIssues , getRepository }}>
             {children}
         </RepositoryContext.Provider>
     )
@@ -85,17 +104,4 @@ export function RepositoryProvider({children}:RepositoryProviderProps){
 
 // https://api.github.com/search/issues?q=Boas%20práticas%20repo:rocketseat-education/reactjs-github-blog-challenge
 
-//https://api.github.com/search/issues?q=Dynamic%20typing%20repo:daltonmenezes/test
-
-
-//https://api.github.com/search/issues?q=Test%20repo:rafaelrossales/issues
-
-// https://api.github.com/repos/rafaelrossales/issues/1 
-
-
-// https://api.github.com/repos/rafaelrossales/Test/issues/1
-
-// https://api.github.com/repos/RafaelRossales/issues/issues/1
-
-
-// https://api.github.com/repos/RafaelRossales/issues/issues/3
+// https://api.github.com/search/issues?q=Test%20${search}%20repo:${REPOSITORY_NAME}/issues

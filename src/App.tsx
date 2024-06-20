@@ -1,12 +1,9 @@
 import { ThemeProvider } from "styled-components"
 import { defaultTheme } from "./styles/default"
 import { GlobalStyle } from "./styles/global"
-import Home from "./pages/home/home"
 import { RepositoryProvider } from "./context/RepositoryContext"
 import { Route, Routes } from "react-router-dom"
-import { Layout } from "./routes/layout/layout"
-import Post from "./components/post"
-import { BrowserRouter as Router } from 'react-router-dom';
+import Home from "./pages/home/Home"
 
 function App(){
   return(
