@@ -133,8 +133,8 @@ export const InfoHeader = styled.div`
         color: ${props=>props.theme.brandBlue};
     }
     
-    a > img{
-        margin-right:3px;
+    img{
+        margin-right:5px;
     }
 `
 

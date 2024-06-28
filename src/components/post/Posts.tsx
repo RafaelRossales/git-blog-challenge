@@ -1,6 +1,6 @@
-import { TIssue } from '../../context/RepositoryContext';
+import { TIssue } from '@context/RepositoryContext';
 import { NoPostsFound, PostsSection } from '../content/style';
-import { Card } from '../cards';
+import {Card} from '@components/cards/';
 
 interface PostProps{
     posts: TIssue[];

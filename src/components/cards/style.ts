@@ -21,7 +21,7 @@ export const CardHeaderText = styled.div`
     font-size: 20px;
     font-weight:bold;
     width: 283px;
-    height: 64px;
+    height: 50px;
 `
 
 export const CardHeaderTime = styled.div`
@@ -29,18 +29,20 @@ export const CardHeaderTime = styled.div`
 `
 
 export const CardBody = styled.div`
-    margin-top: 5px;
     width: 352px;
     height: 12px;
-    font-size: 14px;
+    font-size: 16px;
     display: flex;
     flex-wrap: wrap;
     text-align: justify;
-    color:${props=>props.theme.baseText};
-    line-height: 1.4rem;
+    
+    line-height: 1.6rem;
 
-    /* white-space: nowrap; */
-  /* overflow: hidden; */
-  /* text-overflow: ellipsis; */
-  /* max-width: 200px; */
+    a{
+        
+        text-decoration: none;
+        color:${props=>props.theme.baseText};
+        font-weight: 650;
+    }
+
 `

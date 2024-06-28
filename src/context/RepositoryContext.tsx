@@ -5,9 +5,7 @@ const REPOSITORY_NAME:string = 'rafaelrossales';
 
 const TOKEN :string = import.meta.env.VITE_API_SECRET;
 
-
-
-  const axiosInstance = axios.create({
+const axiosInstance = axios.create({
     baseURL: 'https://api.github.com',  // Base URL for GitHub API
     headers: {
       'Authorization': `Bearer ${TOKEN}`,
@@ -103,7 +101,3 @@ export function RepositoryProvider({children}:RepositoryProviderProps){
         </RepositoryContext.Provider>
     )
 }
-
-// https://api.github.com/search/issues?q=Boas%20práticas%20repo:rocketseat-education/reactjs-github-blog-challenge
-
-// https://api.github.com/search/issues?q=Test%20${search}%20repo:${REPOSITORY_NAME}/issues

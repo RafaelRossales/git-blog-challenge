@@ -1,13 +1,13 @@
-import { Header } from "../../components/header";
-import { Profile } from "../../components/header/profile";
-import { Info } from "../../components/header/info";
+import { Header } from "@components/header/";
+import { Profile } from "@components/header/profile";
+import { Info } from "@components/header/info";
 import { useContext, useEffect, useState } from "react";
-import  {RepositoryContext}  from "../../context/RepositoryContext";
+import  {RepositoryContext}  from "@context/RepositoryContext";
 import { useParams } from "react-router-dom";
-import { ContentStyle } from "../../components/content/style";
-import Post from "../../components/post/Post";
-import Posts from "../../components/post/Posts";
-import { SearchFormComponent } from "../../components/searchbar";
+import { ContentStyle } from "@components/content/style";
+import Post from "@components/post/Post";
+import Posts from "@components/post/Posts";
+import { SearchFormComponent } from "@components/searchbar";
 
 
 
@@ -17,8 +17,6 @@ export default function Home() {
     const { repository, getIssue, issues } = useContext(RepositoryContext);
     const [issue, setIssue] = useState(null);
     const { items, total_count } = issues;
-
-
 
     useEffect(() => {
         const fetchIssue = async () => {

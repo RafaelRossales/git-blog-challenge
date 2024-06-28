@@ -1,7 +1,7 @@
 import { useCallback, useContext, useState } from "react";
 import { ContainerSearch, SearchBarHeader, SearchFormContainer } from "./styles";
 import debounce from "debounce";
-import { RepositoryContext } from "../../context/RepositoryContext";
+import { RepositoryContext } from "@context/RepositoryContext";
 
 interface ISearchProps{
     publishedIssues:number
@@ -31,7 +31,7 @@ export function SearchFormComponent({ publishedIssues }:ISearchProps) {
                 </SearchBarHeader>
                 <input
                     type="text"
-                    placeholder="Search post"
+                    placeholder="Buscar conteúdo"
                     onChange={onChange}
                     value={value}
                 />
